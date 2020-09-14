@@ -3,13 +3,15 @@
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
-    , ui(new Ui::MainWindow)
+    , m_ui(new Ui::MainWindow)
 {
-    ui->setupUi(this);
+    m_ui->setupUi(this);
+    m_ui->centralSplitter->setCollapsible(m_ui->centralSplitter->indexOf(m_ui->originalFilesList), false);
+    m_ui->centralSplitter->setCollapsible(m_ui->centralSplitter->indexOf(m_ui->renamedFilesList), false);
 }
 
 MainWindow::~MainWindow()
 {
-    delete ui;
+    delete m_ui;
 }
 
