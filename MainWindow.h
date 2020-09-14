@@ -3,9 +3,10 @@
 
 #include <QMainWindow>
 
-QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
-QT_END_NAMESPACE
+
+class QItemSelection;
+class QFileSystemModel;
 
 class MainWindow : public QMainWindow
 {
@@ -15,7 +16,12 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+private slots:
+    void directorySelected(const QItemSelection &selected, const QItemSelection &deselected);
+    void openPath(const QString &path);
+
 private:
     Ui::MainWindow *m_ui;
+    QFileSystemModel *m_fileSystemModel;
 };
 #endif // MAINWINDOW_H
